@@ -4,7 +4,7 @@ iodepth=32
 direct=1
 size=1G
 filename=testfile
-sqpoll=1
+sqthread_poll=1
 
 [RandomReadTest]
 rw=randread
