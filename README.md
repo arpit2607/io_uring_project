@@ -19,6 +19,20 @@ make
 
 sudo make install
 
+# compiling and running the program
+
+gcc -o io_uring_test io_uring_test.c -luring
+
+./io_uring_test 0  # Non-SQPOLL
+
+./io_uring_test 1  # SQPOLL
+
+# running fio benchmarks
+
+fio non_sqpoll.fio
+
+fio sqpoll.fio
+
 # perf
 
 sudo apt-get install linux-tools-5.15.0-86-generic
