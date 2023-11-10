@@ -19,10 +19,12 @@ void perform_io_uring_operation(int sqpoll) {
     char buffer[BUFFER_SIZE] = "Hello, io_uring!";
 
     if (sqpoll) {
+        printf("SQPOLL"\n);
         memset(&params, 0, sizeof(params));
         params.flags = IORING_SETUP_SQPOLL;
         ret = io_uring_queue_init_params(32, &ring, &params);
     } else {
+        printf("NOSQPOLL"\n);
         ret = io_uring_queue_init(32, &ring, 0);
     }
     
