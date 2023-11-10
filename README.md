@@ -1,12 +1,11 @@
 # io_uring_project
---basic--
 
 sudo apt-get update
 
 sudo apt-get install build-essential libaio-dev liburing-dev fio
 
 
---fio installation--
+# fio installation
 
 sudo apt-get install git build-essential zlib1g-dev libaio-dev
 
@@ -20,15 +19,15 @@ make
 
 sudo make install
 
---perf--
+# perf
 
 sudo apt-get install linux-tools-5.15.0-86-generic
 
---Basic perf usage--
+# Basic perf usage
 
 perf stat ./io_uring_test
 
---Advanced perf usage--
+# Advanced perf usage
 
 perf record -g ./io_uring_test
 
