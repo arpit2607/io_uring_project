@@ -7,5 +7,5 @@ filename=testfile
 sqthread_poll=1
 
 [RandomReadTest]
-rw=randread
+rw=randrw
 bs=4k
