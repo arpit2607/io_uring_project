@@ -6,5 +6,5 @@ size=1G
 filename=testfile
 
 [RandomReadTest]
-rw=randread
+rw=randrw
 bs=4k
