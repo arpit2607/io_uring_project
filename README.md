@@ -28,6 +28,7 @@ gcc -o io_uring_test io_uring_test.c -luring
 ./io_uring_test 1  # SQPOLL
 
 # running fio benchmarks
+dd if=/dev/zero of=~/testfile bs=1G count=1
 
 fio non_sqpoll.fio
 
