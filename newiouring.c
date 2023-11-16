@@ -7,7 +7,7 @@
 #include <sys/types.h>
 #include <liburing.h>
 
-#define FILE_PATH "newtestfile"
+#define FILE_PATH "testfile"
 #define BUFFER_SIZE (8 * 1024 * 1024) // 8MB buffer
 #define TOTAL_SIZE (1 * 1024 * 1024 * 1024) // 1GB total data
 
