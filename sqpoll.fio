@@ -9,3 +9,4 @@ sqthread_poll=1
 [RandomReadTest]
 rw=randrw
 bs=4k
+numjobs=3
