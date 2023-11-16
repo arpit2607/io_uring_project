@@ -1,13 +1,11 @@
 [global]
 ioengine=io_uring
-iodepth=64
 direct=1
 size=1G
 runtime=60
 filename=~/testfile
-sqthread_poll=1
 
 [job1]
 rw=randrw
 bs=4k
-numjobs=3
+numjobs=4
