@@ -8,3 +8,4 @@ filename=testfile
 [RandomReadTest]
 rw=randrw
 bs=4k
+numjobs=4
