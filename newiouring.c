@@ -8,8 +8,8 @@
 #include <liburing.h>
 
 #define FILE_PATH "newtestfile"
-#define BUFFER_SIZE (2 * 1024) // 2KB buffer
-#define TOTAL_SIZE (10 * 1024 * 1024) // 10MB total data
+#define BUFFER_SIZE (8 * 1024 * 1024) // 8MB buffer
+#define TOTAL_SIZE (1 * 1024 * 1024 * 1024) // 1GB total data
 
 void perform_io_uring_write(int fd, struct io_uring *ring, char *buffer, unsigned nbytes) {
     struct io_uring_sqe *sqe;
