@@ -40,17 +40,17 @@ sudo apt-get install linux-tools-5.15.0-86-generic
 
 # Basic perf usage
 
-sudo perf record -a -g -o perf.data &
+sudo perf record -a -g -o perf_with_sqpoll.data -- fio sqpoll.fio
 
-fio your_fio_job_file.fio
+sudo perf record -a -g -o perf_without_sqpoll.data -- fio non_sqpoll.fio
 
-sudo pkill perf
+sudo perf report -i perf_with_sqpoll.data > report_with_sqpoll.txt
 
-sudo perf report -i perf.data
+sudo perf report -i perf_without_sqpoll.data > report_without_sqpoll.txt
 
-rm perf.data
+diff report_with_sqpoll.txt report_without_sqpoll.txt
 
-sudo perf script -i perf.data > filename.data.txt
+vimdiff report_with_sqpoll.txt report_without_sqpoll.txt
 
 # Advanced perf usage
 
