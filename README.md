@@ -40,7 +40,17 @@ sudo apt-get install linux-tools-5.15.0-86-generic
 
 # Basic perf usage
 
-perf stat ./io_uring_test
+sudo perf record -a -g -o perf.data &
+
+fio your_fio_job_file.fio
+
+sudo pkill perf
+
+sudo perf report -i perf.data
+
+rm perf.data
+
+sudo perf script -i perf.data > filename.data.txt
 
 # Advanced perf usage
 
