@@ -1,13 +1,13 @@
 [global]
-ioengine=io_uring
+ioengine=spdk
 iodepth=64
 direct=1
 size=1G
 runtime=60
-filename=~/testfile
-sqthread_poll=1
+filename=/dev/nvme0n1
 
 [job1]
 rw=randrw
 bs=4k
-numjobs=3
+numjobs=4
+thread=1

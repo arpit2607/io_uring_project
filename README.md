@@ -61,3 +61,31 @@ perf report
 perf stat -e cache-misses,cache-references,instructions,cycles ./io_uring_test
 
 (If perf doesn't work) - echo 1 | sudo tee /proc/sys/kernel/perf_event_paranoid 
+
+# SPDK Setup and run
+git clone https://github.com/spdk/spdk --recursive
+
+sudo apt-get update
+
+ sudo scripts/pkgdep.sh --all
+
+./configure 
+make
+
+sudo scripts/setup.sh
+
+come to root
+git clone https://github.com/axboe/fio
+cd fio
+git checkout fio-3.29
+./configure
+make
+sudo make install
+
+come to root
+cd spdk
+./configure --with-fio=~/fio/ 
+make
+
+cd to io ring
+sudo LD_PRELOAD=../spdk/build/fio/spdk_nvme fio spdk_non_sqpoll.fio

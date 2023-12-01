@@ -1,0 +1,14 @@
+[global]
+ioengine=spdk
+iodepth=64
+direct=1
+size=1G
+runtime=60
+filename=trtype=PCIe traddr=0000.0d.00.0 ns=1
+
+
+[job1]
+rw=randrw
+bs=4k
+numjobs=3
+thread=1
