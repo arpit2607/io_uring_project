@@ -4,21 +4,6 @@ sudo apt-get update
 
 sudo apt-get install build-essential libaio-dev liburing-dev fio
 
-
-# fio installation
-
-sudo apt-get install git build-essential zlib1g-dev libaio-dev
-
-git clone https://github.com/axboe/fio.git
-
-cd fio
-
-./configure
-
-make
-
-sudo make install
-
 # compiling and running the program
 
 gcc -o io_uring_test io_uring_test.c -luring
