@@ -101,18 +101,10 @@ void perform_io_uring_operation(int sqpoll) {
         return;
     }
 
-    // added a check after the open call to see if fd is -1, which indicates an error.
-    // The perror function is used to print a generic error message.
-    // The switch statement allows for more specific error handling based on the value of errno. This includes handling for common errors like permission issues (EACCES), file not found (ENOENT), and too many open files (EMFILE). You can add more cases to handle other specific error types as needed.
-    // If an error occurs, the function prints an appropriate error message and returns early, preventing further operations on an invalid file descriptor.
     // Open file for read and write
     fd = open(FILE_PATH, O_RDWR | O_CREAT, 0644);
     if (fd < 0) {
         perror("open");
-        // introduced a label cleanup_ring at the end of the function where the io_uring ring is cleaned up.
-        // If an error occurs during file opening, the code jumps to the cleanup_ring label using goto. This ensures that the io_uring ring is properly cleaned up before exiting.
-        // The close(fd) call is placed before the cleanup_ring label to ensure that the file descriptor is closed when the function completes normally.
-
         goto cleanup_ring;
         return;
     }
@@ -130,7 +122,6 @@ void perform_io_uring_operation(int sqpoll) {
             case EMFILE:
                 fprintf(stderr, "Too many files open in system.\n");
                 break;
-            // You can add more cases as needed for different error types
             default:
                 fprintf(stderr, "Failed to open file: %s\n", strerror(errno));
         }
